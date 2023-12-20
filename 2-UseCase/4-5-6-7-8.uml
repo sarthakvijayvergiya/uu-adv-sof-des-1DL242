@@ -1,0 +1,72 @@
+@startuml
+left to right direction
+actor "User" as user
+
+actor "Emergency Services" as emergencyServices
+
+actor "Map Service" as mapServices
+
+
+package "Medical Appointments (FR-4)" {
+    usecase "Schedule Appointments" as UC14
+    usecase "Cancel Appointments" as UC15
+    usecase "Edit Appointments" as UC16
+}
+
+package "AI Chatbot (FR-5)" {
+    usecase "Guidance on Symptoms" as UC17
+    usecase "System Support Queries" as UC18
+}
+
+package "Offline Access (FR-6)" {
+    usecase "Offline App Access" as UC19
+    usecase "Edit Data Offline" as UC20
+    usecase "Save Offline Edits" as UC21
+}
+
+package "Healthcare Center Locator (FR-7)" {
+    usecase "GPS Based Center Locator" as UC22
+    usecase "Manual Location Input" as UC23
+    usecase "Access Center Contact Information" as UC24
+}
+
+package "Emergency Services (FR-8)" {
+    usecase "Access Emergency Contacts" as UC25
+    usecase "Manage Personal Emergency Contacts" as UC26
+}
+
+
+user --> UC14
+user --> UC15
+user --> UC16
+user --> UC17
+user --> UC18
+user --> UC19
+user --> UC20
+user --> UC21
+user --> UC22
+user --> UC23
+user --> UC24
+user --> UC25
+user --> UC26
+
+sysAdmin --> UC14
+sysAdmin --> UC15
+sysAdmin --> UC16
+sysAdmin --> UC17
+sysAdmin --> UC18
+sysAdmin --> UC19
+sysAdmin --> UC20
+sysAdmin --> UC21
+sysAdmin --> UC22
+sysAdmin --> UC23
+sysAdmin --> UC24
+sysAdmin --> UC25
+sysAdmin --> UC26
+
+emergencyServices --> UC25
+emergencyServices --> UC26
+
+mapServices --> UC23
+
+@enduml

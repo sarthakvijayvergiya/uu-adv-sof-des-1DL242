@@ -1,0 +1,72 @@
+@startuml
+left to right direction
+actor "User" as user
+actor "Healthcare Provider" as healthcareProvider
+actor "Data Import/Export Services" as dataServices
+actor "SMS Service Provider" as smsProvider
+actor "Bank ID Service" as bankIDService
+
+package "Authentication (FR-1)" {
+    usecase "Two-Step Login with SMS or Bank ID" as UC1
+    usecase "Remember Me Function" as UC2
+}
+
+package "Profile Management (FR-2)" {
+    usecase "Edit Profile Data" as UC3
+    usecase "Remove Data from Profile" as UC4
+    usecase "Add New Data to Profile" as UC5
+    usecase "Share Profile Information" as UC6
+}
+
+package "Health Record Management (FR-3)" {
+    usecase "Edit Health Records" as UC7
+    usecase "Remove Data from Health Records" as UC8
+    usecase "Add New Data to Health Records" as UC9
+    usecase "Share Health Record Information" as UC10
+    usecase "Import External Data" as UC11
+    usecase "Export Data and Create Backups" as UC12
+    usecase "View Health Record Information" as UC13
+}
+
+
+user --> UC1
+user --> UC2
+user --> UC3
+user --> UC4
+user --> UC5
+user --> UC6
+user --> UC7
+user --> UC8
+user --> UC9
+user --> UC10
+user --> UC11
+user --> UC12
+
+
+healthcareProvider --> UC13
+
+sysAdmin --> UC1
+sysAdmin --> UC2
+sysAdmin --> UC3
+sysAdmin --> UC4
+sysAdmin --> UC5
+sysAdmin --> UC6
+sysAdmin --> UC7
+sysAdmin --> UC8
+sysAdmin --> UC9
+sysAdmin --> UC10
+sysAdmin --> UC11
+sysAdmin --> UC12
+sysAdmin --> UC13
+
+
+
+
+
+
+dataServices --> UC11
+dataServices --> UC12
+
+smsProvider --> UC1
+bankIDService --> UC1
+@enduml

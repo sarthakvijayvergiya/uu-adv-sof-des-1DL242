@@ -1,0 +1,48 @@
+@startuml
+node "Client Device" {
+    artifact "App Interface" as UI
+}
+
+node "Web Server" {
+    artifact "Application" as App
+}
+
+node "Application Server" {
+artifact "Backend Services" as Backend
+    artifact "Authentication Service" as AuthService
+    artifact "Appointment Service" as AppService
+    artifact "Healthcare Record Service" as RecordService
+    artifact "AI Chatbot Service" as AIChatbot
+    artifact "Emergency Services" as EmergencySrv
+    artifact "Healthcare Locator Service" as HealthLocator
+}
+
+database "Database Server" {
+    artifact "Health Records DB" as HealthDB
+    artifact "User DB" as UserDB
+    artifact "Appointment DB" as AppDB
+}
+
+node "External Services" {
+    [SMS Gateway] as SMS
+    [Email Service] as Email
+}
+
+UI .right.> App
+App .right.> Backend : HTTP/REST
+
+Backend .down.> AuthService : validate
+Backend .down.> AppService : manage appointments
+Backend .down.> RecordService : access records
+Backend .down.> AIChatbot : conversational interface
+Backend .down.> EmergencySrv : emergency response
+Backend .down.> HealthLocator : locate healthcare providers
+
+AuthService .down.> UserDB : query
+AppService .down.> AppDB : read/write
+RecordService .down.> HealthDB : CRUD operations
+
+Backend -right-> SMS : notifications
+Backend -right-> Email :notificaitons
+
+@enduml

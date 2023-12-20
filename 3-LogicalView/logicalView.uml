@@ -1,0 +1,164 @@
+@startuml
+class User {
+    -username: String
+    -password: String
+    +login(): Boolean
+    +editProfile(profileData: Profile)
+}
+
+class Authentication {
+    -activeLogin: Boolean
+    +authenticate(authMethod: AuthMethod): Boolean
+    +logout(): void
+    +rememberMe(): void
+    +setSession(activeLogin): void
+}
+
+class SMSAuth {
+    +sendCode(phoneNumber: String): String
+    +verifyCode(code: String): Boolean
+}
+
+class BankIDAuth {
+    +requestAuth(userId: String): Boolean
+    +validateAuth(token: String): Boolean
+}
+
+class RememberMe {
+    +activateRememberMe(user: User): void
+    +deactivateRememberMe(user: User): void
+}
+
+class Profile {
+    -personalInfo: PersonalInformation
+    -preferences: Preferences
+    +updateInfo(info: PersonalInformation): void
+    +shareInfo(): String
+}
+
+class HealthcareProvider {
+    +accessHealthRecords(user: User): List<HealthRecord>
+    +scheduleAppointment(user: User, appointment: Appointment): void
+}
+
+class SystemAdmin {
+    +updateEssentialEmergencyContacts(contact: EmergencyContact): void
+    +manageUserAccounts(): void
+    +maintainSystem(): void
+    +manageUserProfile(userId: String)
+}
+
+class EmergencyServices {
+    +provideEmergencyAssistance(): void
+}
+
+class DataImportExportService {
+    +importData(): void
+    +exportData(): void
+}
+
+class HealthRecord {
+    -healthData: List<HealthData>
+    +editRecord(data: HealthData): void
+    +shareRecord(): String
+}
+
+class Appointment {
+    -date: Date
+    -time: Time
+    -healthCareProvider: HealthCareProvider
+    +schedule(date: Date, time: Time, healthCareProvider: HealthCareProvider): void
+    +cancel(): void
+}
+
+class AIChatbot {
+    +provideGuidance(symptoms: String): String
+    +supportQueries(query: String): String
+}
+
+class Locator {
+    +findHealthcareCenter(location: String): List<Center>
+}
+
+class EmergencyService {
+    +accessEssentialEmergencyServices(): List<EmergencyContact>
+    +managePersonalEmergencyContacts(contact: PersonalContact): void
+}
+
+class AuthMethod << interface >> {
+    +authenticate(): Boolean
+}
+
+class PersonalInformation {
+    -name: String
+    -address: String
+    -email: String
+    -phone: String
+}
+
+class Preferences {
+    -language: String
+    -notificationSettings: String
+}
+
+class HealthData {
+    -type: String
+    -value: String
+    -dateRecorded: Date
+}
+
+class HealthCareProvider {
+    -name: String
+    -specialization: String
+}
+
+class Center {
+    -name: String
+    -location: String
+    -contactInfo: String
+}
+
+class PersonalContact {
+    -name: String
+    -phone: String
+    -relation: String
+}
+
+class EmergencyContact {
+    -serviceType: String
+    -contactInfo: String
+}
+
+class OfflineAccess {
+    -cachedData: String
+    +accessDataOffline(): String
+    +syncData(): void
+}
+
+
+
+
+SMSAuth --|> AuthMethod
+BankIDAuth --|> AuthMethod
+
+Authentication "1" -- "1" SMSAuth
+Authentication "1" -- "1" BankIDAuth
+Authentication "1" -- "1" RememberMe
+
+User "1" -- "1" Authentication
+User "1" -- "1" Profile
+User "1" -- "*" HealthRecord
+User "1" -- "*" Appointment
+User "1" -- "1" AIChatbot
+User "1" -- "1" Locator
+User "1" -- "*" EmergencyService
+User "1" -- "1" OfflineAccess
+
+
+HealthcareProvider "1" -- "1" HealthRecord
+HealthcareProvider "1" -- "1" Appointment
+
+SystemAdmin "1" -- "1" User
+SystemAdmin "1" -- "*" EmergencyService
+
+@enduml

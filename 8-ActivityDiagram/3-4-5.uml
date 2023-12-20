@@ -1,0 +1,31 @@
+@startuml
+start
+
+partition "Health Records Management" {
+    :User accesses health records;
+    if (Choose action) then (Edit)
+        :User updates health data;
+    else (View)
+        :Display health data;
+    endif
+    :Health records updated/viewed;
+}
+
+partition "Appointment Scheduling" {
+    :User requests to schedule an appointment;
+    :Select date and time;
+    :Choose healthcare provider;
+    :Appointment details confirmed;
+    :Appointment scheduled;
+}
+
+partition "AI Chatbot Interaction" {
+    :User interacts with AI Chatbot;
+    :Input query or symptom;
+    :AI Chatbot processes information;
+    :Provide guidance or system support;
+}
+
+
+stop
+@enduml

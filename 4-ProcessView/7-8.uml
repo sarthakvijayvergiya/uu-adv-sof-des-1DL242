@@ -1,0 +1,30 @@
+@startuml
+actor User
+participant "App System" as App
+actor "System Administrator" as Admin
+
+
+' Functional Requirement: Healthcare Center Locator
+User -> App : findHealthcareCenter(location)
+note right of App: FR7: Healthcare Center Locator
+App -> App : searchCenters(location)
+App -> User : CenterDetails
+
+' Functional Requirement: Emergency Services Access
+User -> App : accessEmergencyContacts()
+App -> App : getEssentialServices()
+note right of App: FR8: Emergency Services Access
+App -> User : essentialServicesList
+
+' Functional Requirement: Emergency Contacts Management
+Admin -> App : updateEssentialEmergencyContacts(EmergencyContact)
+App -> App : saveEmergencyContact(EmergencyContact)
+note right of App: FR8: Emergency Contacts Management
+App -> Admin : UpdateConfirmation
+
+User -> App : managePersonalEmergencyContacts(PersonalContact)
+App -> App : savePersonalContact(PersonalContact)
+App -> User : PersonalContactUpdate
+
+deactivate App
+@enduml

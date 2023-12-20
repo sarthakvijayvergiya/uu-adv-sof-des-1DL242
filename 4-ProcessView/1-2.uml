@@ -1,0 +1,48 @@
+@startuml
+actor User
+participant "App System" as App
+participant "SMSAuth" as SMS
+participant "BankIDAuth" as BankID
+actor "System Admin" as Admin
+
+
+' Functional Requirement: Authentication
+note right of App: FR1: Authentication
+User -> App : login()
+activate App
+
+App -> App : authenticate(authMethod)
+activate App
+
+alt Using SMS Authentication
+    App -> SMS : sendCode(phoneNumber)
+    SMS -> User : SMS Code
+    User -> SMS : verifyCode(code)
+    SMS -> App : VerificationResult
+else Using Bank ID Authentication
+    App -> BankID : requestAuth(userId)
+    BankID -> User : BankID Auth
+    User -> BankID : validateAuth(token)
+    BankID -> App : VerificationResult
+end
+
+App -> App : rememberMe()
+App -> App : setSession(activeLogin)
+
+App -> User : LoginStatus
+
+' Functional Requirement: Manage User Profile
+User -> App : editProfile(personalInfo, preferences)
+activate App
+App -> App : updateProfileData(Profile)
+note right of App: FR2: Manage User Profile
+App -> User : ProfileUpdated
+
+' System Administration
+Admin -> App : manageUserProfile(userID)
+note right of App: System Administration
+App -> App : accessUserProfile(User)
+App -> Admin : UserProfile
+
+deactivate App
+@enduml

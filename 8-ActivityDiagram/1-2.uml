@@ -1,0 +1,27 @@
+@startuml
+start
+partition "Login Process" {
+    :User requests login;
+    if (Choose Authentication Method) then (SMS)
+        :Send SMS Code;
+        :User enters SMS Code;
+        :Verify SMS Code;
+    else (Bank ID)
+        :Request Bank ID Auth;
+        :User authenticates via Bank ID;
+        :Validate Bank ID;
+    endif
+    :User logged in;
+}
+partition "Profile Management" {
+    :User accesses profile settings;
+    if (Choose action) then (Edit)
+        :User updates profile information;
+    else (View)
+        :Display profile information;
+    endif
+    :Profile updated/viewed;
+}
+
+stop
+@enduml

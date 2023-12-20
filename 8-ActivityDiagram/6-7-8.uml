@@ -1,0 +1,40 @@
+@startuml
+start
+
+partition "Offline Mode Operation" {
+    :User operates in offline mode;
+    :Access and modify data offline;
+    if (Reconnect to internet?) then (Yes)
+        :Sync offline data with server;
+    else (No)
+        :Continue in offline mode;
+    endif
+    :Data synced/updated;
+}
+
+partition "Healthcare Locator Activity" {
+    :User locates healthcare centers;
+    :Choose location input method;
+    if (GPS) then (Yes)
+        :Use GPS to display nearby centers;
+    else (No)
+        :Manually input location;
+        :Display centers on map;
+    endif
+    :Contact information accessible;
+}
+
+
+partition "Emergency Services Access" {
+    :User accesses emergency services;
+    if (Type of service) then (Essential)
+        :Display essential emergency contacts;
+    else (Personal)
+        :Manage personal emergency contacts;
+    endif
+    :Emergency contacts accessed/managed;
+}
+
+
+stop
+@enduml
