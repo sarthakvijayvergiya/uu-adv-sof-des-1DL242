@@ -26,6 +26,7 @@ database "Database Server" {
 node "External Services" {
     [SMS Gateway] as SMS
     [Email Service] as Email
+    [Emerygency Services] as Emergency
 }
 
 UI .right.> App
