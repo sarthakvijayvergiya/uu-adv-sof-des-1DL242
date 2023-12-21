@@ -15,8 +15,8 @@ App -> App : editRecord(data)
 App -> Provider : RecordUpdated
 
 ' Functional Requirement: Appointment Scheduling
-User -> App : scheduleAppointment(date, time, doctor)
-App -> App : schedule(date, time, healthCareProvider)
+User -> App : scheduleAppointment(date, time, healthProvider)
+App -> App : schedule(date, time, healthProvider)
 note right of App: FR4: Appointment Scheduling
 App -> User : Appointment Confirmation
 

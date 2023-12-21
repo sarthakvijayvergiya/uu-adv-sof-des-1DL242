@@ -1,4 +1,4 @@
-public class Doctor {
+public class HealthProvider {
     private String name;
     private String specialization;
 
