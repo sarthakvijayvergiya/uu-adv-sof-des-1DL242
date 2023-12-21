@@ -1,4 +1,6 @@
 @startuml
+scale 0.75
+
 class User {
     -username: String
     -password: String
@@ -39,13 +41,6 @@ class Profile {
 class HealthcareProvider {
     +accessHealthRecords(user: User): List<HealthRecord>
     +scheduleAppointment(user: User, appointment: Appointment): void
-}
-
-class SystemAdmin {
-    +updateEssentialEmergencyContacts(contact: EmergencyContact): void
-    +manageUserAccounts(): void
-    +maintainSystem(): void
-    +manageUserProfile(userId: String)
 }
 
 class EmergencyServices {
@@ -136,14 +131,12 @@ class OfflineAccess {
 }
 
 
-
-
-SMSAuth --|> AuthMethod
-BankIDAuth --|> AuthMethod
-
 Authentication "1" -- "1" SMSAuth
 Authentication "1" -- "1" BankIDAuth
 Authentication "1" -- "1" RememberMe
+
+SMSAuth --|> AuthMethod
+BankIDAuth --|> AuthMethod
 
 User "1" -- "1" Authentication
 User "1" -- "1" Profile
@@ -157,8 +150,5 @@ User "1" -- "1" OfflineAccess
 
 HealthcareProvider "1" -- "1" HealthRecord
 HealthcareProvider "1" -- "1" Appointment
-
-SystemAdmin "1" -- "1" User
-SystemAdmin "1" -- "*" EmergencyService
 
 @enduml

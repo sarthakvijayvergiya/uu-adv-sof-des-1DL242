@@ -3,7 +3,6 @@ actor User
 participant "App System" as App
 participant "SMSAuth" as SMS
 participant "BankIDAuth" as BankID
-actor "System Admin" as Admin
 
 
 ' Functional Requirement: Authentication
@@ -38,11 +37,7 @@ App -> App : updateProfileData(Profile)
 note right of App: FR2: Manage User Profile
 App -> User : ProfileUpdated
 
-' System Administration
-Admin -> App : manageUserProfile(userID)
-note right of App: System Administration
-App -> App : accessUserProfile(User)
-App -> Admin : UserProfile
+
 
 deactivate App
 @enduml

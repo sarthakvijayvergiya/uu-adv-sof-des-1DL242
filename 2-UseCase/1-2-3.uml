@@ -45,23 +45,6 @@ user --> UC12
 
 healthcareProvider --> UC13
 
-sysAdmin --> UC1
-sysAdmin --> UC2
-sysAdmin --> UC3
-sysAdmin --> UC4
-sysAdmin --> UC5
-sysAdmin --> UC6
-sysAdmin --> UC7
-sysAdmin --> UC8
-sysAdmin --> UC9
-sysAdmin --> UC10
-sysAdmin --> UC11
-sysAdmin --> UC12
-sysAdmin --> UC13
-
-
-
-
 
 
 dataServices --> UC11

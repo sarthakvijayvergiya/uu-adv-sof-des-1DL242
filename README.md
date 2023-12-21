@@ -2,6 +2,17 @@
 
 # Mini PHR Medical App Documentation
 
+## Table of Contents
+1. [Functional Requirements](#functional-requirements)
+2. [Use Case Diagrams](#use-case-diagrams)
+3. [Logical View](#logical-view)
+4. [Process View](#process-view)
+5. [Development View](#development-view)
+6. [Deployment View](#deployment-view)
+7. [Implementation](#implementation)
+8. [Activity Diagrams](#activity-diagrams)
+9. [Low-Fidelity Prototype](#low-fidelity-prototype)
+
 ## Functional Requirements
 
 ### Authentication (FR-1)
@@ -61,6 +72,8 @@
 
 ## Deployment View
 ![Deployment View](6-DeploymentView/deploymentView.png)
+
+## Implementation
 
 ## Activity Diagrams
 ![Activity Diagram](8-ActivityDiagram/1-2.png)

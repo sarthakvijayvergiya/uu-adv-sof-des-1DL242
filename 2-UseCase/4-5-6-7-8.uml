@@ -50,19 +50,7 @@ user --> UC24
 user --> UC25
 user --> UC26
 
-sysAdmin --> UC14
-sysAdmin --> UC15
-sysAdmin --> UC16
-sysAdmin --> UC17
-sysAdmin --> UC18
-sysAdmin --> UC19
-sysAdmin --> UC20
-sysAdmin --> UC21
-sysAdmin --> UC22
-sysAdmin --> UC23
-sysAdmin --> UC24
-sysAdmin --> UC25
-sysAdmin --> UC26
+
 
 emergencyServices --> UC25
 emergencyServices --> UC26
